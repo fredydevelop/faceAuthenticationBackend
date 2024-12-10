@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import os
+import dj_database_url
+import environ 
+
 # from dotenv import load_dotenv
 
 # load_dotenv()
@@ -20,22 +23,25 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env()
+environ.Env.read_env()
+ENVIRONMENT= env("ENVIRONMENT", default="production")
+
+
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = ''
-import os
+
 SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-from environ import Env
-env = Env()
-Env.read_env()
-ENVIRONMENT= env("ENVIRONMENT", default="production")
+
 
 
 if ENVIRONMENT == "development":
@@ -109,21 +115,30 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
-        'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',              # Default PostgreSQL database name
-        'USER': 'postgres',              # Default PostgreSQL username
-        'PASSWORD': 'codedcoder',     # Replace with your actual password
-        'HOST': 'localhost',             # The database is on the local machine
-        'PORT': '5432',    
-    }
-    
-}
 
+         'default': {
+         'ENGINE': 'django.db.backends.postgresql',
+         'NAME': 'postgres',              # Default PostgreSQL database name
+         'USER': 'postgres',              # Default PostgreSQL username
+         'PASSWORD': 'codedcoder',     # Replace with your actual password
+         'HOST': 'localhost',             # The database is on the local machine
+         'PORT': '5432',    
+     }
+    
+ }
+
+POSTGRES_LOCALLY=False
+if ENVIRONMENT== 'production' or POSTGRES_LOCALLY==True:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=env('DATABASE_URL', default='postgresql://db_dj9g_user:Co0RMRf6SGVztycktqDhn24JYTaXLkW8@dpg-ctbutcl2ng1s73br460g-a.frankfurt-postgres.render.com/db_dj9g')  # Fallback URL for local testing
+        )
+    }
+
+# DATABASES = {
+#      'default': env.db()
+#  }
+#DATABASES['default']= dj_database_url.parse(env('DATABASE_URL'))
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -223,15 +238,6 @@ ALLOWED_HOSTS = ["https://web-base-faceauth.netlify.app"]
 
 
 #newly added
-#from environ import Env
-#env = Env()
-#Env.read_env()
-#ENVIRONMENT= env("ENVIRONMENT", default="production")
-
-# DATABASES = {
-#     'default': env.db()
-# }
-
 
 SECURE_SSL_REDIRECT = True  # Redirect all HTTP to HTTPS
 SECURE_HSTS_SECONDS = 31536000  # Enable HTTP Strict Transport Security (1 year)
@@ -264,8 +270,6 @@ CSRF_COOKIE_SECURE = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'profile_images')
-
-
 
 
 ACCOUNT_USERNAME_BLACKLIST= ("Olori_oko")
