@@ -1,0 +1,5 @@
+__pycache__
+staticfiles/
+profile_images/
+.env
+db.sqlite3
