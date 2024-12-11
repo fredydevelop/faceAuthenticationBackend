@@ -22,6 +22,8 @@ import tensorflow as tf
 import keras.layers as Layer
 import keras
 from L1layer import L1Dist
+import zipfile
+# from your_module import L1Dist  # Update with your actual import for L1Dist
 
 
 
@@ -100,6 +102,7 @@ def verify_func(model,input_img,validation_img,verification_threshold):
 
 
 
+
 @csrf_protect
 def verify(request):
     if request.method == 'POST':
@@ -129,7 +132,7 @@ def verify(request):
             #image_rgb = cv2.cvtColor(image_array,cv2.COLOR_BGR2RGB)
             
 
-            model_path = r'C:\Users\THINKPAD T460s\Documents\Web base facial authentication\backend\siamese_model.h5'
+            model_path = "../siamese_model.h5"
             model=tf.keras.models.load_model(model_path, custom_objects={'L1Dist':L1Dist})
             #is_match= verify_faces(img,image_rgb)
             is_match=verify_func(model,old_picture,image_array,0.8)
