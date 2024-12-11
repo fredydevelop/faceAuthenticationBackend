@@ -49,7 +49,6 @@ if ENVIRONMENT == "development":
 else:
     DEBUG= False
 
-ALLOWED_HOSTS = ["https://web-base-faceauth.netlify.app"]
 
 REST_FRAMEWORK={
     "DEFAULT_AUTHENTICATION_CLASSES":("rest_framework_simplejwt.authentication.JWTAuthentication",),
@@ -108,7 +107,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'backend.backend.wsgi.application'
+WSGI_APPLICATION = 'backend.wsgi.application'
 
 
 # Database
