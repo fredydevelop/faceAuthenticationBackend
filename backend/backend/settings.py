@@ -73,7 +73,7 @@ INSTALLED_APPS = [
     "admin_honeypot",
     "rest_framework",
     "corsheaders",
-    "api.apps.ApiConfig",
+    "api",
 ]
 
 MIDDLEWARE = [
