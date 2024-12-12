@@ -113,26 +113,31 @@ WSGI_APPLICATION = 'a_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
+# DATABASES = {
 
-         'default': {
-         'ENGINE': 'django.db.backends.postgresql',
-         'NAME': 'postgres',              # Default PostgreSQL database name
-         'USER': 'postgres',              # Default PostgreSQL username
-         'PASSWORD': 'codedcoder',     # Replace with your actual password
-         'HOST': 'localhost',             # The database is on the local machine
-         'PORT': '5432',    
-     }
+#          'default': {
+#          'ENGINE': 'django.db.backends.postgresql',
+#          'NAME': 'postgres',              # Default PostgreSQL database name
+#          'USER': 'postgres',              # Default PostgreSQL username
+#          'PASSWORD': 'codedcoder',     # Replace with your actual password
+#          'HOST': 'localhost',             # The database is on the local machine
+#          'PORT': '5432',    
+#      }
     
- }
+#  }
 
-POSTGRES_LOCALLY=False
-if ENVIRONMENT== 'production' or POSTGRES_LOCALLY==True:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=env('DATABASE_URL', default='postgresql://db_dj9g_user:Co0RMRf6SGVztycktqDhn24JYTaXLkW8@dpg-ctbutcl2ng1s73br460g-a.frankfurt-postgres.render.com/db_dj9g')  # Fallback URL for local testing
-        )
-    }
+# POSTGRES_LOCALLY=False
+# if ENVIRONMENT== 'production' or POSTGRES_LOCALLY==True:
+#     DATABASES = {
+#         'default': dj_database_url.config(
+#             default=env('DATABASE_URL', default='postgresql://db_dj9g_user:Co0RMRf6SGVztycktqDhn24JYTaXLkW8@dpg-ctbutcl2ng1s73br460g-a.frankfurt-postgres.render.com/db_dj9g')  # Fallback URL for local testing
+#         )
+#     }
+
+
+DATABASES={
+    "default":dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
 
 # DATABASES = {
 #      'default': env.db()
@@ -172,6 +177,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'profile_images')
 
 STATIC_URL = '/static/'
 
@@ -231,14 +239,14 @@ CSRF_COOKIE_HTTPONLY = False
 
 CSRF_TRUSTED_ORIGINS = [
     'https://web-base-faceauth.netlify.app',
+    "https://faceauthback.onrender.com",
 ]
 
 # CSRF_COOKIE_NAME = 'csrftoken'
 
 
 # Ensure ALLOWED_HOSTS is correctly set (if you need specific settings)
-ALLOWED_HOSTS = ["https://web-base-faceauth.netlify.app",  # Frontend URL
-    "https://faceauthback.onrender.com", ]
+ALLOWED_HOSTS = ["*"]
 
 
 # LOGIN_URL = '/accounts/login/'
@@ -246,14 +254,14 @@ ALLOWED_HOSTS = ["https://web-base-faceauth.netlify.app",  # Frontend URL
 
 #newly added
 
-SECURE_SSL_REDIRECT = True  # Redirect all HTTP to HTTPS
-SECURE_HSTS_SECONDS = 31536000  # Enable HTTP Strict Transport Security (1 year)
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True  # Redirect all HTTP to HTTPS
+# SECURE_HSTS_SECONDS = 31536000  # Enable HTTP Strict Transport Security (1 year)
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
+# SECURE_BROWSER_XSS_FILTER = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 
 # LOGGING = {
@@ -275,8 +283,7 @@ CSRF_COOKIE_SECURE = True
 #     },
 # }
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'profile_images')
+
 
 
 ACCOUNT_USERNAME_BLACKLIST= ("Olori_oko")
