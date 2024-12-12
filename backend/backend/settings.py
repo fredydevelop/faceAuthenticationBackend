@@ -257,14 +257,16 @@ CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = 'None'
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = False
-CSRF_COOKIE_SAMESITE = 'Lax
+CSRF_COOKIE_SAMESITE = "Lax"
 
 # CSRF_COOKIE_NAME = 'csrftoken'
 
 
 # Ensure ALLOWED_HOSTS is correctly set (if you need specific settings)
-ALLOWED_HOSTS = ['web-base-faceauth.netlify.app',
-    "faceauthback.onrender.com",]
+ALLOWED_HOSTS = [
+    "web-base-faceauth.netlify.app",
+    "faceauthback.onrender.com",
+    ]
 
 
 # LOGIN_URL = '/accounts/login/'
