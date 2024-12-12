@@ -19,9 +19,20 @@ import environ
 # from dotenv import load_dotenv
 
 # load_dotenv()
+import os
+import sys
+
+import sys
+print("Python Path:", sys.path)
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+#Just added this
+sys.path.insert(0, str(BASE_DIR))
+
 
 env = environ.Env()
 environ.Env.read_env()
