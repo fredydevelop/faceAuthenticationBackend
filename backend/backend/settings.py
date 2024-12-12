@@ -208,15 +208,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
-     'https://web-base-faceauth.netlify.app',
-    "https://faceauthback.onrender.com",  
     "https://web-auth-frontend.onrender.com",
  ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://web-base-faceauth.netlify.app',
-    "https://faceauthback.onrender.com",
-    "https://web-auth-frontend.onrender.com",
+    #'https://web-base-faceauth.netlify.app',
+    #"https://faceauthback.onrender.com",
+    #"https://web-auth-frontend.onrender.com",
+    "https://*.onrender.com",
 ]
 
 
@@ -258,9 +257,7 @@ CSRF_COOKIE_SAMESITE = 'None'  # Required for cross-site requests
 
 # Ensure ALLOWED_HOSTS is correctly set (if you need specific settings)
 ALLOWED_HOSTS = [
-    "web-base-faceauth.netlify.app",
     "faceauthback.onrender.com",
-    "web-auth-frontend.onrender.com",
     ]
 
 
@@ -269,13 +266,13 @@ ALLOWED_HOSTS = [
 
 #newly added
 
-SECURE_SSL_REDIRECT = True  # Redirect all HTTP to HTTPS
-SECURE_HSTS_SECONDS = 31536000  # Enable HTTP Strict Transport Security (1 year)
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SESSION_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True  # Redirect all HTTP to HTTPS
+# SECURE_HSTS_SECONDS = 31536000  # Enable HTTP Strict Transport Security (1 year)
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
+# SECURE_BROWSER_XSS_FILTER = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# SESSION_COOKIE_SECURE = True
 
 
 # LOGGING = {
