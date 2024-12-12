@@ -207,14 +207,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # CORS settings
+CORS_TRUSTED_ORIGINS = [
+    "https://web-auth-frontend.onrender.com",
+]
+
 CORS_ALLOWED_ORIGINS = [
     "https://web-auth-frontend.onrender.com",
+    "https://render.com",
+    "https://onrender.com",
+
+
  ]
 
 CSRF_TRUSTED_ORIGINS = [
-    #'https://web-base-faceauth.netlify.app',
-    #"https://faceauthback.onrender.com",
-    #"https://web-auth-frontend.onrender.com",
     "https://*.onrender.com",
 ]
 
