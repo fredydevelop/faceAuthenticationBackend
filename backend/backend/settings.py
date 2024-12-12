@@ -211,9 +211,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
-     "https://web-base-faceauth.netlify.app",  # Frontend URL
-    "https://faceauthback.onrender.com", 
+     'https://web-base-faceauth.netlify.app',
+    "https://faceauthback.onrender.com",  
  ]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-base-faceauth.netlify.app',
+    "https://faceauthback.onrender.com",
+]
+
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -248,16 +254,13 @@ CORS_ALLOW_METHODS = [
 CSRF_COOKIE_SECURE = True  # For development only; set to True in production
 CSRF_COOKIE_HTTPONLY = False
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://web-base-faceauth.netlify.app',
-    "https://faceauthback.onrender.com",
-]
 
 # CSRF_COOKIE_NAME = 'csrftoken'
 
 
 # Ensure ALLOWED_HOSTS is correctly set (if you need specific settings)
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['web-base-faceauth.netlify.app',
+    "faceauthback.onrender.com",]
 
 
 # LOGIN_URL = '/accounts/login/'
