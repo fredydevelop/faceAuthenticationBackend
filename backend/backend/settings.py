@@ -19,10 +19,8 @@ import environ
 # from dotenv import load_dotenv
 
 # load_dotenv()
-import os
 import sys
 
-import sys
 print("Python Path:", sys.path)
 
 
@@ -93,7 +91,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware'
@@ -207,7 +205,6 @@ if not DEBUG:    # Tell Django to copy static assets into a path called `staticf
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# CORS_ALLOW_ALL_ORIGINS = True
 
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
