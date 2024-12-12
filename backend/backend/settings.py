@@ -252,7 +252,7 @@ CORS_ALLOW_METHODS = [
 # CSRF settings
 CSRF_COOKIE_SECURE = True  # For development only; set to True in production
 CSRF_COOKIE_HTTPONLY = False
-
+CSRF_COOKIE_SAMESITE = 'None'  # Required for cross-site requests
 # CSRF_COOKIE_NAME = 'csrftoken'
 
 
