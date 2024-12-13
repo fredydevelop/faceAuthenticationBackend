@@ -310,6 +310,7 @@ ALLOWED_HOSTS = [
 #     },
 # }
 
+X_FRAME_OPTIONS = "SAMEORIGIN"
 
 
 
