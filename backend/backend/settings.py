@@ -86,11 +86,13 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    
+    
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -213,14 +215,21 @@ CORS_TRUSTED_ORIGINS = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://web-auth-frontend.onrender.com",
-    "https://render.com",
-    "https://onrender.com",
-
-
+    "https://web-base-faceauth.netlify.app",
+    # "https://render.com",
+    # "https://onrender.com",
  ]
+
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.netlify\.app$",
+    r"^https://.*\.onrender\.com$",
+]
+
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.onrender.com",
+    "https://*.netlify.app"
 ]
 
 
